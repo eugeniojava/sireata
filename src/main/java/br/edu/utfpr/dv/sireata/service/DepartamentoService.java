@@ -28,12 +28,8 @@ public class DepartamentoService {
 			List<DepartamentoJson> ret = new ArrayList<DepartamentoJson>();
 			
 			for(Departamento d : list) {
-				DepartamentoJson departamento = new DepartamentoJson();
-				
-				departamento.setCodigo(d.getIdDepartamento());
-				departamento.setNome(d.getNome());
-				
-				ret.add(departamento);
+				DepartamentoJson departamentoJson = buildDepartamentoJson(d);
+				ret.add(departamentoJson);
 			}
 			
 			return Response.ok(ret).build();
@@ -43,6 +39,13 @@ public class DepartamentoService {
 			return Response.status(Status.INTERNAL_SERVER_ERROR.ordinal(), e.getMessage()).build();
 		}
 	}
+
+    private DepartamentoJson buildDepartamentoJson(Departamento departamento) {
+    	DepartamentoJson departamentoJson = new DepartamentoJson();
+    	departamentoJson.setCodigo(departamento.getIdDepartamento());
+    	departamentoJson.setNome(departamento.getNome());
+    	return departamentoJson;
+    }
 	
 	public class DepartamentoJson {
 		

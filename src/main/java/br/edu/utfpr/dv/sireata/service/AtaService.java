@@ -30,14 +30,8 @@ public class AtaService {
 			List<AtaJson> ret = new ArrayList<AtaJson>();
 			
 			for(Ata a : list) {
-				AtaJson ata = new AtaJson();
-				
-				ata.setTipo(a.getTipo());
-				ata.setNumero(a.getNumero());
-				ata.setAno(DateUtils.getYear(a.getData()));
-				ata.setData(DateUtils.format(a.getData(), "dd/MM/yyyy"));
-				
-				ret.add(ata);
+                AtaJson ataJson = buildAtaJson(a);
+				ret.add(ataJson);
 			}
 			
 			return Response.ok(ret).build();
@@ -47,6 +41,15 @@ public class AtaService {
 			return Response.status(Status.INTERNAL_SERVER_ERROR.ordinal(), e.getMessage()).build();
 		}
 	}
+
+    private AtaJson buildAtaJson(Ata ata) {
+        AtaJson ataJson = new AtaJson();
+        ataJson.setTipo(ata.getTipo());
+        ataJson.setNumero(ata.getNumero());
+        ataJson.setAno(DateUtils.getYear(ata.getData()));
+        ataJson.setData(DateUtils.format(ata.getData(), "dd/MM/yyyy"));
+        return ataJson;
+    }
 	
 	@GET
 	@Path("/visualizar/{orgao}/{tipo}/{numero}/{ano}")

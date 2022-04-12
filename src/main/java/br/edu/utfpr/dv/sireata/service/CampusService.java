@@ -27,12 +27,8 @@ public class CampusService {
 			List<CampusJson> ret = new ArrayList<CampusJson>();
 			
 			for(Campus c : list) {
-				CampusJson campus = new CampusJson();
-				
-				campus.setCodigo(c.getIdCampus());
-				campus.setNome(c.getNome());
-				
-				ret.add(campus);
+				CampusJson campusJson = buildCampusJson(c);
+				ret.add(campusJson);
 			}
 			
 			return Response.ok(ret).build();
@@ -42,6 +38,13 @@ public class CampusService {
 			return Response.status(Status.INTERNAL_SERVER_ERROR.ordinal(), e.getMessage()).build();
 		}
 	}
+
+    private CampusJson buildCampusJson(Campus campus) {
+        CampusJson campusJson = new CampusJson();
+        campusJson.setCodigo(campus.getIdCampus());
+        campusJson.setNome(campus.getNome());
+        return campusJson;
+    }
 	
 	public class CampusJson {
 		

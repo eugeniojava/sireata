@@ -28,12 +28,8 @@ public class OrgaoService {
 			List<OrgaoJson> ret = new ArrayList<OrgaoJson>();
 			
 			for(Orgao o : list) {
-				OrgaoJson orgao = new OrgaoJson();
-				
-				orgao.setCodigo(o.getIdOrgao());
-				orgao.setNome(o.getNome());
-				
-				ret.add(orgao);
+				OrgaoJson orgaoJson = buildOrgaoJson(o);
+				ret.add(orgaoJson);
 			}
 			
 			return Response.ok(ret).build();
@@ -43,6 +39,13 @@ public class OrgaoService {
 			return Response.status(Status.INTERNAL_SERVER_ERROR.ordinal(), e.getMessage()).build();
 		}
 	}
+
+    private OrgaoJson buildOrgaoJson(Orgao orgao) {
+        OrgaoJson orgaoJson = new OrgaoJson();
+        orgaoJson.setCodigo(orgao.getIdOrgao());
+        orgaoJson.setNome(orgao.getNome());
+        return orgaoJson;
+    }
 	
 	public class OrgaoJson {
 		
