@@ -27,18 +27,22 @@ public class DateUtils {
 	public static int getSemester(){
 		Calendar today = DateUtils.getToday();
 		
-		if(today.get(Calendar.MONTH) >= 6){
+		if(getActualCalendarMonth(today) >= 6){
 			return 2;
 		}else{
 			return 1;
 		}
 	}
+
+    private static int getActualCalendarMonth(Calendar calendar) {
+        return calendar.get(Calendar.MONTH);
+    }
 	
 	public static int getSemester(Date date){
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
 		
-		if(cal.get(Calendar.MONTH) >= 6){
+		if(getActualCalendarMonth(cal) >= 6){
 			return 2;
 		}else{
 			return 1;
