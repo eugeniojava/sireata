@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import br.edu.utfpr.dv.sireata.dao.PautaDAO;
+import br.edu.utfpr.dv.sireata.factory.DAOFactory;
 import br.edu.utfpr.dv.sireata.model.Pauta;
 
 public class PautaBO {
@@ -63,9 +64,7 @@ public class PautaBO {
 	
 	public void excluir(int id) throws Exception{
 		try{
-			PautaDAO dao = new PautaDAO();
-			
-			dao.excluir(id);
+			DAOFactory.getInstance(Pauta.class).excluir(id);
 		}catch(Exception e){
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 			
