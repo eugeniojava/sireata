@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import br.edu.utfpr.dv.sireata.dao.OrgaoDAO;
+import br.edu.utfpr.dv.sireata.factory.DAOFactory;
 import br.edu.utfpr.dv.sireata.model.Orgao;
 import br.edu.utfpr.dv.sireata.model.OrgaoMembro;
 import br.edu.utfpr.dv.sireata.model.Usuario;
@@ -13,9 +14,7 @@ public class OrgaoBO {
 	
 	public Orgao buscarPorId(int id) throws Exception{
 		try{
-			OrgaoDAO dao = new OrgaoDAO();
-			
-			return dao.buscarPorId(id);
+			return (Orgao) DAOFactory.getInstance(Orgao.class).buscarPorId(id);
 		}catch(Exception e){
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 			
