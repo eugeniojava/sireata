@@ -10,7 +10,7 @@ import java.util.List;
 
 import br.edu.utfpr.dv.sireata.model.Anexo;
 
-public class AnexoDAO {
+public class AnexoDAO implements DAO<Anexo> {
 	
 	public Anexo buscarPorId(int id) throws SQLException{
 		Connection conn = null;
@@ -114,7 +114,8 @@ public class AnexoDAO {
 				conn.close();
 		}
 	}
-	
+
+    @Override
 	public void excluir(int id) throws SQLException{
 		Connection conn = null;
 		Statement stmt = null;
