@@ -5,16 +5,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import br.edu.utfpr.dv.sireata.dao.ComentarioDAO;
+import br.edu.utfpr.dv.sireata.factory.DAOFactory;
 import br.edu.utfpr.dv.sireata.model.Comentario;
 import br.edu.utfpr.dv.sireata.model.Comentario.SituacaoComentario;
 
 public class ComentarioBO {
-	
+
 	public Comentario buscarPorId(int id) throws Exception{
 		try{
-			ComentarioDAO dao = new ComentarioDAO();
-			
-			return dao.buscarPorId(id);
+			return (Comentario) DAOFactory.getInstance(Comentario.class).buscarPorId(id);
 		}catch(Exception e){
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 			
