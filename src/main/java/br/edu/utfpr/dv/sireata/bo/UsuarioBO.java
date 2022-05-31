@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.naming.CommunicationException;
 
 import br.edu.utfpr.dv.sireata.dao.UsuarioDAO;
+import br.edu.utfpr.dv.sireata.factory.DAOFactory;
 import br.edu.utfpr.dv.sireata.ldap.LdapConfig;
 import br.edu.utfpr.dv.sireata.ldap.LdapUtils;
 import br.edu.utfpr.dv.sireata.model.Usuario;
@@ -93,9 +94,7 @@ public class UsuarioBO {
 	
 	public Usuario buscarPorId(int id) throws Exception{
 		try {
-			UsuarioDAO dao = new UsuarioDAO();
-			
-			return dao.buscarPorId(id);
+			return (Usuario) DAOFactory.getInstance(Usuario.class).buscarPorId(id);
 		} catch (SQLException e) {
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 			
