@@ -11,8 +11,8 @@ import java.util.List;
 
 import br.edu.utfpr.dv.sireata.model.Campus;
 
-public class CampusDAO {
-	
+public class CampusDAO implements DAO<Campus> {
+	@Override
 	public Campus buscarPorId(int id) throws SQLException{
 		Connection conn = null;
 		PreparedStatement stmt = null;
