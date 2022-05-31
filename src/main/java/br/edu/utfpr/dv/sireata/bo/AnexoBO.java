@@ -12,7 +12,7 @@ public class AnexoBO {
 
 	public Anexo buscarPorId(int id) throws Exception{
 		try{
-			return new AnexoDAO().buscarPorId(id);
+			return (Anexo) DAOFactory.getInstance(Anexo.class).buscarPorId(id);
 		}catch(Exception e){
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 			
