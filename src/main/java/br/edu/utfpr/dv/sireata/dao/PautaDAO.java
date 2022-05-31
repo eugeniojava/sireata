@@ -11,7 +11,7 @@ import java.util.List;
 import br.edu.utfpr.dv.sireata.model.Pauta;
 
 public class PautaDAO implements DAO<Pauta> {
-	
+	@Override
 	public Pauta buscarPorId(int id) throws SQLException{
 		Connection conn = null;
 		PreparedStatement stmt = null;

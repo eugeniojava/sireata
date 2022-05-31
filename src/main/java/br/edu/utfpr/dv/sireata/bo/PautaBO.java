@@ -12,9 +12,7 @@ public class PautaBO {
 	
 	public Pauta buscarPorId(int id) throws Exception{
 		try{
-			PautaDAO dao = new PautaDAO();
-			
-			return dao.buscarPorId(id);
+			return (Pauta) DAOFactory.getInstance(Pauta.class).buscarPorId(id);
 		}catch(Exception e){
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 			
