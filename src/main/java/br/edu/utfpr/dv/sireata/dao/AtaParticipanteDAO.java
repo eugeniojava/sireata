@@ -10,7 +10,7 @@ import java.util.List;
 
 import br.edu.utfpr.dv.sireata.model.AtaParticipante;
 
-public class AtaParticipanteDAO {
+public class AtaParticipanteDAO implements DAO<AtaParticipante> {
 	
 	public AtaParticipante buscarPorId(int id) throws SQLException{
 		Connection conn = null;
@@ -118,7 +118,8 @@ public class AtaParticipanteDAO {
 				conn.close();
 		}
 	}
-	
+
+    @Override
 	public void excluir(int id) throws SQLException{
 		Connection conn = null;
 		Statement stmt = null;
