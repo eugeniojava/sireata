@@ -5,15 +5,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import br.edu.utfpr.dv.sireata.dao.DepartamentoDAO;
+import br.edu.utfpr.dv.sireata.factory.DAOFactory;
 import br.edu.utfpr.dv.sireata.model.Departamento;
 
 public class DepartamentoBO {
 	
 	public Departamento buscarPorId(int id) throws Exception{
 		try{
-			DepartamentoDAO dao = new DepartamentoDAO();
-			
-			return dao.buscarPorId(id);
+			return (Departamento) DAOFactory.getInstance(Departamento.class).buscarPorId(id);
 		}catch(Exception e){
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 			

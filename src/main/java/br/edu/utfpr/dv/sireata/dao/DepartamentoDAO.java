@@ -11,8 +11,8 @@ import java.util.List;
 
 import br.edu.utfpr.dv.sireata.model.Departamento;
 
-public class DepartamentoDAO {
-
+public class DepartamentoDAO implements DAO<Departamento> {
+    @Override
 	public Departamento buscarPorId(int id) throws SQLException{
 		Connection conn = null;
 		PreparedStatement stmt = null;
