@@ -11,7 +11,7 @@ import java.util.List;
 import br.edu.utfpr.dv.sireata.model.AtaParticipante;
 
 public class AtaParticipanteDAO implements DAO<AtaParticipante> {
-	
+	@Override
 	public AtaParticipante buscarPorId(int id) throws SQLException{
 		Connection conn = null;
 		PreparedStatement stmt = null;

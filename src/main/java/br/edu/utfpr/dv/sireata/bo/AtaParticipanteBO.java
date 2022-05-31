@@ -12,7 +12,7 @@ public class AtaParticipanteBO {
 	
 	public AtaParticipante buscarPorId(int id) throws Exception{
 		try{
-			return new AtaParticipanteDAO().buscarPorId(id);
+			return (AtaParticipante) DAOFactory.getInstance(AtaParticipante.class).buscarPorId(id);
 		}catch(Exception e){
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 			
